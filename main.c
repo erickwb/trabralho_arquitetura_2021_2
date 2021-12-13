@@ -8,27 +8,24 @@ int main(){
 
     FILE *file;
     file = fopen("input.txt", "r"); //lendo o arquivo input.txt
-    FILE *file2;
-    file2 = fopen("output.txt", "w"); //arquivo de destino 
 
-    char frase[100]; //buffer
-    
+    char frase[4]; //buffer
+
     if(file == NULL){
         printf("Nao e possivel abrir o arquivo:");
         getchar();
         exit(0);
     }
 
-    while (fgets(frase,100, file) != NULL){
+    while (fgets(frase,5, file) != NULL){
      //   printf("%s\n", frase); //printando o conteudo da linha
+
         ConvertChar(frase); 
-    
-       // Decodifica(frase, file2);
+        
+        Decodifica(frase); // 4 primeiros bytes
 
     };
-   
-        
 
-  
+
     return 0;
 }

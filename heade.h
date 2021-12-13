@@ -3,11 +3,9 @@
 
 
 void ConvertChar(char vet[]);
-void LSL(char vet[], FILE *file2);
-void LSR(char vet[], FILE *file2);
-void Decodifica(char vet[], FILE *file2);
-
-
+void LSL(char vet[]);
+void LSR(char vet[]);
+void Decodifica(char vet[]);
 
 
 #endif // HEADER_H_INCLUDED
