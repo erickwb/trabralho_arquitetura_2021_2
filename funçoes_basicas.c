@@ -21,22 +21,36 @@ void ConvertChar(char vet[]){
     }
 }
 
+
+
 //parametros: vetor de char, arquivo de destino
-void Decodifica(char vet[]){
+void Decodifica(char vet[], int registradores[]){
 
     //primeiro digito = 4bits primeiros da instruçao thumb
     switch (vet[0]){
     case 0:
         if((vet[1] >> 3) == 0){
             //caso LSL
-            LSL(vet);
+            LSL(vet, registradores);
             
         }
         if((vet[1] >> 3) == 1){
             //caso LSR
-            LSR(vet);
+            LSR(vet,registradores);
             
-        }     
+        } 
+    case 1:
+         //instruçao ASR
+        if((vet[1] >> 3) == 0){
+            ASR(vet,registradores);
+        }
+        //instruçoes ADD / SUB com LM
+        if ((vet[1] >> 1) == 4 ){
+            //instruçao ADD com LM
+            ADD_com_LM(vet, registradores);
+
+        }
+
 
         break;
         
