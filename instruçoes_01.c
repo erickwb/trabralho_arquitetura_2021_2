@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "heade.h"
+#include "header.h"
 
 
 void LSL(char vet[], int registradores[]){
