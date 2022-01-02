@@ -8,12 +8,12 @@ void ConvertChar(char vet[]){
         //caso seja de 0 a 9
         if((vet[i] >= '0') && (vet[i] <= '9')){
             vet[i] = vet[i] - '0'; //operacao para trasforma de char p/ int
-            printf("%d", vet[i]);
+        //    printf("%d", vet[i]);
         }
         //caso seja de a - f
         if((vet[i] >= 'a') && (vet[i] <= 'f')){
             vet[i] = vet[i] - 'W'; //operacao para trasforma de char p/ int
-            printf("%d", vet[i]);
+        //  printf("%d", vet[i]);
         }
         else if (vet[i] > 'f'){ //corrigir tal caso
             printf("O digito invalido, digite um digito em hexadecimal\n");
@@ -24,30 +24,30 @@ void ConvertChar(char vet[]){
 
 
 //parametros: vetor de char, arquivo de destino
-void Decodifica(char vet[], int registradores[]){
+void Decodifica(char vet[], int registradores[], char CPSR[]){
 
     //primeiro digito = 4bits primeiros da instruçao thumb
     switch (vet[0]){
     case 0:
         if((vet[1] >> 3) == 0){
             //caso LSL
-            LSL(vet, registradores);
+            LSL(vet, registradores, CPSR);
             
         }
         if((vet[1] >> 3) == 1){
             //caso LSR
-            LSR(vet,registradores);
+            LSR(vet, registradores, CPSR);
             
         } 
     case 1:
          //instruçao ASR
         if((vet[1] >> 3) == 0){
-            ASR(vet,registradores);
+            ASR(vet, registradores, CPSR);
         }
         //instruçoes ADD / SUB com LM
         if ((vet[1] >> 1) == 4 ){
             //instruçao ADD com LM
-            ADD_com_LM(vet, registradores);
+            ADD_com_LM(vet, registradores, CPSR);
 
         }
 

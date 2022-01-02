@@ -3,7 +3,7 @@
 #include "header.h"
 
 
-void LSL(char vet[], int registradores[]){
+void LSL(char vet[], int registradores[], char CPSR[]){
     
     int imediato = 0; //imediado de 5bits
     imediato = (vet[1] & 7) << 2; //and com 7 para saber os 3primeiro bits do segundo digito da direita pra esquerda, deslocado 2 vez para <-
@@ -14,19 +14,21 @@ void LSL(char vet[], int registradores[]){
     Lm = (Lm | (vet[3] & 8)) >> 3;
     int Ld = (vet[3] & 7); //3 primeiros bits do quarto digito ;
     
-
-    // adicionando nos registradores
-
-   // printf("\n%d lm \n", Lm);
-   // printf("%d ld  \n", Ld);
-   // printf("%d imedia  \n", imediato);
-
+  /* printf("\nLSL");
+    printf("%d lm \n", Lm);
+    printf("%d ld  \n", Ld);
+    printf("%d imedia  \n", imediato);
+  */
+     // adicionando nos registradores
     registradores[Ld] = (registradores[Lm] << imediato); // atualiza os registradores
-    printf("%dlll\n",registradores[Ld] );
+    // printf("%d result\n",registradores[Ld] );
+
+    //atualizando CPSR
+    Atualiza_CPSR(registradores, CPSR, Ld);
 
 }
 
-void LSR(char vet[],int registradores[]){
+void LSR(char vet[], int registradores[], char CPSR[]){
     
     int imediato = 0; //imediado de 5bits
     imediato = (vet[1] & 7) << 2; //and com 7 para saber os 3primeiro bits do segundo digito da direita pra esquerda, deslocado 2 vez para <-
@@ -37,18 +39,12 @@ void LSR(char vet[],int registradores[]){
     Lm = (Lm | (vet[3] & 8)) >> 3;
     int Ld = (vet[3] & 7); // 3 primeiros bits do quarto digito ;
     
-    
-    // adicionando nos registradores
-    //printf("\n%d lm \n", Lm);
-    //printf("%d ld  \n", Ld);
-    //printf("%d imedia  \n", imediato);
-
-    registradores[Ld] = (registradores[Lm] >> imediato);
-    printf("%dlll\n",registradores[Ld] );
+    //atualizando CPSR
+    Atualiza_CPSR(registradores, CPSR, Ld);
 
 }
 
-void ASR(char vet[],int registradores[]){
+void ASR(char vet[], int registradores[], char CPSR[]){
 
     int imediato = 0; //imediado de 5bits
     imediato = (vet[1] & 7) << 2; //and com 7 para saber os 3primeiro bits do segundo digito da direita pra esquerda
@@ -60,19 +56,15 @@ void ASR(char vet[],int registradores[]){
     Lm = (Lm | (vet[3] & 8)) >> 3;
     int Ld = (vet[3] & 7); //3 primeiros bits do quarto digito ;
     
-    
     // adicionando nos registradores
-    //printf("\n%d lm \n", Lm);
-    //printf("%d ld  \n", Ld);
-    //printf("%d imedia  \n", imediato);
+    registradores[Ld] = Lm >> imediato;
 
-    //registradores[Ld] = 
-
-
+    //atualizando CPSR
+    Atualiza_CPSR(registradores, CPSR, Ld);
   
 }
 
-void ADD_com_LM(char vet[],int registradores[]){
+void ADD_com_LM(char vet[], int registradores[], char CPSR[]){
 
     int Lm = 0;
     Lm = (vet[1] & 1) << 2; //pegando o ultimo bit do segundo numero, e deslocando-o para o que sera o 3bit do LM
@@ -84,14 +76,10 @@ void ADD_com_LM(char vet[],int registradores[]){
     Ln = (Ln| (vet[3] & 8)) >> 3;
     int Ld = (vet[3] & 7); //3 primeiros bits do quarto digito ;
     
-    //adicionando no arquivo de destino 
-
-        // adicionando nos registradores
-   // printf("\n%d lm \n", Lm);
-   // printf("%d ld  \n", Ld);
-   // printf("%d Ln \n", Ln);
-
+    // adicionando nos registradores
     registradores[Ld] = Ln + Lm;
-    printf("%dlll\n",registradores[Ld] );
+
+    //atualizando CPSR
+    Atualiza_CPSR(registradores, CPSR, Ld);
 
 }
