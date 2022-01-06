@@ -39,6 +39,8 @@ void LSR(char vet[], int registradores[], char CPSR[]){
     Lm = (Lm | (vet[3] & 8)) >> 3;
     int Ld = (vet[3] & 7); // 3 primeiros bits do quarto digito ;
     
+    // adicionando nos registradores
+    registradores[Ld] = (registradores[Lm] >> imediato);
     //atualizando CPSR
     Atualiza_CPSR(registradores, CPSR, Ld);
 

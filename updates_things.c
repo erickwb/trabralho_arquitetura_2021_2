@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "header.h"
 
 void Atualiza_CPSR(int registradores[],char CPSR[], int Ld){
@@ -19,3 +20,19 @@ void Atualiza_CPSR(int registradores[],char CPSR[], int Ld){
     //ideia and
     //ideia compara lm com o valor do shift
 }
+void Copia_conteudo(char origem[], char buffer1[], char buffer2[]){
+
+    for (int i = 3; i < 7; i++){
+        buffer1[i-3] = origem[i]; 
+    }
+    for (int i = 7; i < 11; i++){
+        buffer2[i-7] = origem[i]; 
+    }
+
+
+
+
+    
+   // printf("%s \n", destino);
+}
+
