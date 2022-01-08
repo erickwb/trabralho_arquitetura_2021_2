@@ -25,10 +25,19 @@ void Mostra_CPSR(char CPSR[]){
     printf("\n");
 }
 
-void Mostra_Data_Programa(char buffer1[], char buffer2[]){
-    char aux [100];
-    printf("\n####################### Memoria de Programa ########################\n");
-    strcat(strcpy(aux, buffer1), buffer2);
-    printf("%s", aux);
+void Mostra_memory_data(char buffer1[], FILE *file){
+
+    printf("\n####################### Memoria de programa ########################\n");
+
+    if(file == NULL){
+        printf("Nao e possivel abrir o arquivo:");
+        getchar();
+        exit(0);
+    }
+
+    while (fgets(buffer1,12, file) != NULL){
+        printf("%s", buffer1);
+    }
+
 }
 

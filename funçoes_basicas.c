@@ -2,6 +2,15 @@
 #include <stdlib.h>
 #include "header.h"
 
+/*
+void execult(char buffer1 [], char buffer2[], int registradores[], char CPSR[]){
+    ConvertChar(buffer1); 
+    Decodifica(buffer1, registradores, CPSR); // 4 primeiros bytes
+        //
+    ConvertChar(buffer2); 
+    Decodifica(buffer2, registradores, CPSR); // 4 primeiros bytes
+}
+*/
 
 void ConvertChar(char vet[]){
     
