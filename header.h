@@ -10,6 +10,8 @@ void LSL(char vet[],int registradores[], char CPSR[]);
 void LSR(char vet[],int registradores[], char CPSR[]);
 void ASR(char vet[],int registradores[], char CPSR[]);
 void ADD_com_LM(char vet[],int registradores[], char CPSR[]);
+
+//void SUB_com_LM(char vet[], int registradores[], char CPSR[]);
 //Show_things
 void Mostra_Registrador(int registradores[]);
 void Mostra_CPSR(char CPSR[]);

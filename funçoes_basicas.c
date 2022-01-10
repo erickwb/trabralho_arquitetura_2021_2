@@ -58,8 +58,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
             ADD_com_LM(vet, registradores, CPSR);
 
         }
-
-
+       
         break;
         
     }
