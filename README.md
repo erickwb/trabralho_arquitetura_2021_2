@@ -2,14 +2,28 @@
 Programa que simula o conjunto de instrunção THUMB ARM
 
 
-Faltando fazer 
+Faltando fazer !!!
 
-Fazer restande das instruçoes()
+Fazer restante das instruçoes()
 
-atualizar resto dos registradore ()
+Fazer PC, LR, SP ()
+
 altualizar modo CPSR () 
+
 condiçoes de termino ()
-fazer restandes das flags ()
+
+fazer restantes das flags ()
+
 fazer memorias ()
+
 fazer pilha ()
+
 fazer exceções/interrupções ()
+
+## Modo de compilação 
+
+comando "make" para gerar arquivos -o
+
+comando "./teste" para execultar o programa
+
+comando "make clean" para apagar os arquivos -o

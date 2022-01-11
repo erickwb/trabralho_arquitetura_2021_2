@@ -60,7 +60,14 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
         }
        
         break;
-        
+
+    case 13:  
+        if(vet[1] == 14)  {
+            Undefined();
+            break;
+        }
     }
+    
+
 }
 
