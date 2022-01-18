@@ -63,10 +63,16 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
 
     case 13:  
         if(vet[1] == 14)  {
-            Undefined();
+            Undefined(vet, registradores, CPSR);
             break;
         }
-    }
+        break;
+    
+    case 14:
+        if((vet[1] >> 3) == 0){
+            B_ponto(vet, registradores, CPSR);
+            break;
+        }
     
 
 }

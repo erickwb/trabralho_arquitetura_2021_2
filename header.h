@@ -12,7 +12,9 @@ void ASR(char vet[],int registradores[], char CPSR[]);
 void ADD_com_LM(char vet[],int registradores[], char CPSR[]);
 void SUB_com_LM(char vet[], int registradores[], char CPSR[]);
 
-void Undefined();
+//instruções de parada
+void Undefined(char vet[], int registradores[], char CPSR[]);
+void B_ponto(char vet[], int registradores[], char CPSR[]);
 //Show_things
 void Mostra_Registrador(int registradores[]);
 void Mostra_CPSR(char CPSR[]);

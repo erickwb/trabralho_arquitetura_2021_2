@@ -106,9 +106,13 @@ void SUB_com_LM(char vet[], int registradores[], char CPSR[]){
   Atualiza_CPSR(registradores, CPSR, Ld);
 
 }
-
-void Undefined(){
-  printf("\n Instrução Indefinida"); 
+// instruçoes de parada
+void Undefined(char vet[], int registradores[], char CPSR[]){
+  printf("\n Instrução Indefinida encontrada"); 
   
+}
+
+void B_ponto(char vet[], int registradores[], char CPSR[]){
+  printf("\n Encontrada instrução do tipo b .");
 
 }
