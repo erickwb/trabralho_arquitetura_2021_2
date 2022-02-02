@@ -18,7 +18,7 @@ void B_ponto(char vet[], int registradores[], char CPSR[]);
 //Show_things
 void Mostra_Registrador(int registradores[]);
 void Mostra_CPSR(char CPSR[]);
-void Mostra_memory_data(char buffer1[], FILE *file);
+void Mostra_memory_program(char frase[], char buffer1[], char buffer2[], FILE *file, unsigned int memoria_programa);
 //updates_things
 void Atualiza_CPSR(int registradores[],char CPSR[], int Ld);
 void Copia_conteudo(char origem[], char buffer1[], char buffer2[]);

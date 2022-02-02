@@ -29,10 +29,6 @@ void Copia_conteudo(char origem[], char buffer1[], char buffer2[]){
         buffer2[i-7] = origem[i]; 
     }
 
-
-
-
-    
    // printf("%s \n", destino);
 }
 

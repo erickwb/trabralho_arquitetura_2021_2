@@ -35,6 +35,8 @@ void ConvertChar(char vet[]){
 
 //parametros: vetor de char, arquivo de destino
 void Decodifica(char vet[], int registradores[], char CPSR[]){
+    // atualizando PC
+    registradores[9] = (registradores[9] + 4);
 
     //primeiro digito = 4bits primeiros da instruçao thumb
     switch (vet[0]){
@@ -75,5 +77,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
         }
     
 
+
+    }
 }
 

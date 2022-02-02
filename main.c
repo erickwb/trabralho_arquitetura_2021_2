@@ -4,11 +4,12 @@
 #include "header.h"
 
 //variaveis de saida do simulador
-int registradores[8] = {1,1,1,1,1,1,1,1};
+int registradores[9] = {1,1,1,1,1,1,1,1,0};
 char CPSR[9] = {'n','z','c','v','q','j','i','f','T'}; //falta o modo
 int memoria_dados;
 unsigned int memoria_programa = 0x80000000;
 char aux_memoria [200];
+char Cond_parada[] = "0000";
 
 
 int main(){
@@ -28,21 +29,19 @@ int main(){
     }
 
     while (fgets(frase,12, file) != NULL){
- 
         Copia_conteudo(frase, buffer1, buffer2);
         ConvertChar(buffer1); 
         Decodifica(buffer1, registradores, CPSR); // 4 primeiros bytes
-        //
+        //segunda instrução
         ConvertChar(buffer2); 
-        Decodifica(buffer2, registradores, CPSR); // 4 primeiros bytes
+        Decodifica(buffer2, registradores, CPSR); // 4 ultimos bytes
     };
 
-    fclose(file); //fechando o arquivo
-    
     Mostra_Registrador(registradores);
     Mostra_CPSR(CPSR);
-    Mostra_memory_data(frase, file); //com erro
-    
+    Mostra_memory_program(frase,buffer1,buffer2 ,file, memoria_programa); //com erro
 
+ 
+    fclose(file); //fechando o arquivo 
     return 0;
 }

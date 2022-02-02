@@ -116,3 +116,4 @@ void B_ponto(char vet[], int registradores[], char CPSR[]){
   printf("\n Encontrada instrução do tipo b .");
 
 }
+
