@@ -34,7 +34,7 @@ void ConvertChar(char vet[]){
 
 
 //parametros: vetor de char, arquivo de destino
-void Decodifica(char vet[], int registradores[], char CPSR[]){
+void Decodifica(char vet[], int registradores[], char CPSR[], int memoria_de_dados_address[], int memoria_de_dados_conteudo[], int cont_m){
 
     //primeiro digito = 4bits primeiros da instruçao thumb
     switch (vet[0]){
@@ -47,6 +47,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
             //caso LSR
             LSR(vet, registradores, CPSR);
         } 
+    break;
     case 1:
          //instruçao ASR
         if((vet[1] >> 3) == 0){
@@ -123,7 +124,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
 
         //instrução LDR_com_imediato8
         if((vet[1] & 8) == 8){
-            LDR_com_imediato8(vet, registradores, CPSR);
+            LDR_com_imediato8(vet, registradores, CPSR, memoria_de_dados_address, memoria_de_dados_conteudo, cont_m);
         }
 
         break;
@@ -132,7 +133,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
         //instruções STR | STRH | STRB | LDRSB pre
         if((vet[1] & 14) == 0){
             //instrução STR
-            STR(vet, registradores, CPSR);
+            STR(vet, registradores, CPSR, memoria_de_dados_address, memoria_de_dados_conteudo, cont_m);
         }
         if((vet[1] & 14) == 2){
             //instrução STRH
@@ -257,15 +258,12 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
             Undefined(vet, registradores, CPSR);
             break;
         }
-        break;
-    
+    break;
     case 14:
         if((vet[1] >> 3) == 0){
             B_ponto(vet, registradores, CPSR);
             break;
         }
-    }
-    
-
+        break;
 }
 

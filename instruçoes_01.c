@@ -270,7 +270,7 @@ void BLX(char vet[], int registradores[], char CPSR[]){
   
 }
 
-void LDR_com_imediato8(char vet[], int registradores[], char CPSR[]){
+void LDR_com_imediato8(char vet[], int registradores[], char CPSR[], int memoria_de_dados_address[], int memoria_de_dados_conteudo[], int cont_m){
   int imediato = 0;
   //pegando os 8 primeiros, no terceiro e quarto bit
   imediato = ((vet[2] & 15) << 4);
@@ -280,12 +280,12 @@ void LDR_com_imediato8(char vet[], int registradores[], char CPSR[]){
   Ld = (vet[1] & 7);//3 bits do segundo numero
 
   int address = registradores[0] + imediato*4; 
-  registradores[Ld] = Load_memory_data(address);
+  registradores[Ld] = Load_memory_data(address, memoria_de_dados_address, memoria_de_dados_conteudo, cont_m);
 
   Atualiza_CPSR(registradores, CPSR, Ld);
 }
 
-void STR(char vet[], int registradores[], char CPSR[]){
+void STR(char vet[], int registradores[], char CPSR[], int memoria_de_dados_address[], int memoria_de_dados_conteudo[], int cont_m){
   int Ld = 0;
   Ld = (vet[3] & 7);
 
@@ -298,8 +298,8 @@ void STR(char vet[], int registradores[], char CPSR[]){
   Lm = Lm | ((vet[2] & 12) >> 2);//pegando os 2 ultimos bits do terceiro número
 
   int address = registradores[Ln] + registradores[Lm];
-  Store_memory_data(address, registradores[Ld]);
-  
+  Store_memory_data(address, registradores[Ld], memoria_de_dados_address, memoria_de_dados_conteudo, cont_m);
+
   Atualiza_CPSR(registradores, CPSR, Ld);
 }
 
@@ -601,7 +601,16 @@ void Undefined(char vet[], int registradores[], char CPSR[]){
   
 }
 
+void BKPT(char vet[], int registradores[], char CPSR[]){
+  printf("\n Instrução BKPT \n ");
+  printf("\n Status atual do programa");
+  Mostra_Registrador(registradores);
+  Mostra_CPSR(CPSR);
+   // Mostra_memory_program(frase,buffer1,buffer2 ,file, memoria_programa); //com erro
+}
+
 void B_ponto(char vet[], int registradores[], char CPSR[]){
   printf("\n Encontrada instrução do tipo b .");
 
 }
+

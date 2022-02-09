@@ -22,8 +22,8 @@ void CMP_com_HN_LM(char vet[], int registradores[], char CPSR[]);
 void CMP_com_HN_HM(char vet[], int registradores[], char CPSR[]);
 void BX(char vet[], int registradores[], char CPSR[]);
 void BLX(char vet[], int registradores[], char CPSR[]);
-void LDR_com_imediato8(char vet[], int registradores[], char CPSR[]);
-void STR(char vet[], int registradores[], char CPSR[]);
+void LDR_com_imediato8(char vet[], int registradores[], char CPSR[], int memoria_de_dados_address[], int memoria_de_dados_conteudo[], int cont_m);
+void STR(char vet[], int registradores[], char CPSR[], int memoria_de_dados_address[], int memoria_de_dados_conteudo[], int cont_m);
 void STRH(char vet[], int registradores[], char CPSR[]);
 void STRB(char vet[], int registradores[], char CPSR[]);
 void LDRSB_pre(char vet[], int registradores[], char CPSR[]);
@@ -54,6 +54,7 @@ void B_ponto(char vet[], int registradores[], char CPSR[]);
 void Mostra_Registrador(int registradores[]);
 void Mostra_CPSR(char CPSR[]);
 void Mostra_memory_data(int address[], int conteudo[], int cont);
+void Mostra_memory_program(char frase[], char buffer1[], char buffer2[], FILE *file, unsigned int memoria_programa);
 //updates_things
 void Atualiza_CPSR(int registradores[],char CPSR[], int Ld);
 void Copia_conteudo(char origem[], char buffer1[], char buffer2[]);

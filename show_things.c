@@ -11,9 +11,10 @@ void Mostra_Registrador(int registradores[]){
 
     for(int i = 0; i < 8; i++){
         printf("R%d ",i);
-        printf(" %d \n",registradores[i]);
+        printf(" 0x");
+        printf("%x \n",registradores[i]);
     }
-    printf("PC %X \n", registradores[9]);
+    printf("PC 0x%x \n", (registradores[9]/2));
 }
 
 void Mostra_CPSR(char CPSR[]){
@@ -28,7 +29,8 @@ void Mostra_CPSR(char CPSR[]){
 
 void Mostra_memory_program(char frase[], char buffer1[], char buffer2[], FILE *file, unsigned int memoria_programa){
     rewind(file); //reabrindo o arquivo
-    char buffer_temp [8]; // buffer temporario
+    char buffer_temp [12]; // buffer temporario
+    char buffer_temp2;
     int cont = 0;
 
     printf("\n####################### Memoria de programa ########################\n");
