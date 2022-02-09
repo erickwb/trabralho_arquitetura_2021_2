@@ -13,6 +13,7 @@ void Mostra_Registrador(int registradores[]){
         printf("R%d ",i);
         printf(" %d \n",registradores[i]);
     }
+    printf("PC %X \n", registradores[9]);
 }
 
 void Mostra_CPSR(char CPSR[]){
@@ -25,7 +26,10 @@ void Mostra_CPSR(char CPSR[]){
     printf("\n");
 }
 
-void Mostra_memory_data(char buffer1[], FILE *file){
+void Mostra_memory_program(char frase[], char buffer1[], char buffer2[], FILE *file, unsigned int memoria_programa){
+    rewind(file); //reabrindo o arquivo
+    char buffer_temp [8]; // buffer temporario
+    int cont = 0;
 
     printf("\n####################### Memoria de programa ########################\n");
 
@@ -34,10 +38,10 @@ void Mostra_memory_data(char buffer1[], FILE *file){
         getchar();
         exit(0);
     }
-
-    while (fgets(buffer1,12, file) != NULL){
-        printf("%s", buffer1);
-    }
-
 }
 
+void Mostra_memory_data(int address[], int conteudo[], int cont){
+    for(int n = 0; n <= cont; n++){
+        printf("%08d : %d\n", address[n], conteudo[n]);
+    }
+}
