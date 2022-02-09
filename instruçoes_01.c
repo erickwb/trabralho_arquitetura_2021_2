@@ -112,6 +112,14 @@ void Undefined(char vet[], int registradores[], char CPSR[]){
   
 }
 
+void BKPT(char vet[], int registradores[], char CPSR[]){
+  printf("\n Instrução BKPT \n ");
+  printf("\n Status atual do programa");
+  Mostra_Registrador(registradores);
+  Mostra_CPSR(CPSR);
+   // Mostra_memory_program(frase,buffer1,buffer2 ,file, memoria_programa); //com erro
+}
+
 void B_ponto(char vet[], int registradores[], char CPSR[]){
   printf("\n Encontrada instrução do tipo b .");
 

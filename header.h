@@ -11,6 +11,7 @@ void LSR(char vet[],int registradores[], char CPSR[]);
 void ASR(char vet[],int registradores[], char CPSR[]);
 void ADD_com_LM(char vet[],int registradores[], char CPSR[]);
 void SUB_com_LM(char vet[], int registradores[], char CPSR[]);
+void BKPT(char vet[], int registradores[], char CPSR[]);
 
 //instruções de parada
 void Undefined(char vet[], int registradores[], char CPSR[]);

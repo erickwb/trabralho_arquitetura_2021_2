@@ -16,9 +16,7 @@ void Atualiza_CPSR(int registradores[],char CPSR[], int Ld){
     }else{
         CPSR[1] = 'z';
     }
-    //verificaca o valor da carry flag
-    //ideia and
-    //ideia compara lm com o valor do shift
+
 }
 void Copia_conteudo(char origem[], char buffer1[], char buffer2[]){
 

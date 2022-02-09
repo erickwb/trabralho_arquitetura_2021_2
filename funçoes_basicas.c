@@ -35,8 +35,6 @@ void ConvertChar(char vet[]){
 
 //parametros: vetor de char, arquivo de destino
 void Decodifica(char vet[], int registradores[], char CPSR[]){
-    // atualizando PC
-    registradores[9] = (registradores[9] + 4);
 
     //primeiro digito = 4bits primeiros da instruçao thumb
     switch (vet[0]){
@@ -49,6 +47,7 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
             //caso LSR
             LSR(vet, registradores, CPSR);
         } 
+    break;
     case 1:
          //instruçao ASR
         if((vet[1] >> 3) == 0){
@@ -61,22 +60,25 @@ void Decodifica(char vet[], int registradores[], char CPSR[]){
 
         }
        
-        break;
-
+    break;
+    case 11:
+        if(vet[1] == 14){
+            BKPT(vet, registradores, CPSR);
+        }
+    break;
     case 13:  
         if(vet[1] == 14)  {
             Undefined(vet, registradores, CPSR);
             break;
         }
-        break;
-    
+    break;
     case 14:
         if((vet[1] >> 3) == 0){
             B_ponto(vet, registradores, CPSR);
             break;
         }
     
-
+        break;
 
     }
 }
